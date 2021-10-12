@@ -5,6 +5,6 @@ In the binarizer, the phoneme classes corresponding to blank were considered as 
 
 # requirement
 
-pyannote-metrics=3.1
-pyannote-audio=1.1.2
+pyannote-metrics=3.1  
+pyannote-audio=1.1.2  
 
