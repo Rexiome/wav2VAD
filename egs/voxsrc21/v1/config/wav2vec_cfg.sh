@@ -5,4 +5,4 @@ mdon=0
 mdof=0.8
 integral_frames=2
 #grid engine parameter
-. ./parse_options.sh
+. parse_options.sh
