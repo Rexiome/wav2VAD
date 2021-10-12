@@ -1,7 +1,7 @@
 # Experiment
 
-cd wav2VAD/egs/voxscr21/v1
-./experiment.sh 
+cd wav2VAD/egs/voxscr21/v1  
+./experiment.sh  
 
 # Result
 
