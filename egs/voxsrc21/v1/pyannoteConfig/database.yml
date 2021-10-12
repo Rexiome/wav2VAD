@@ -1,0 +1,9 @@
+Protocols:
+  corpus:
+    SpeakerDiarization:
+      corpus:
+        development:
+          annotated: ./corpus.development.uem
+          annotation: ./corpus.development.rttm
+          uri: ./corpus.development.lst
+

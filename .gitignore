@@ -127,3 +127,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/egs/voxsrc21/v1/exp/model/wav2vec/dev/scores/fisher_chuck4min_logits_probs.npy
