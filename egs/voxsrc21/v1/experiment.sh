@@ -26,17 +26,9 @@ INSTRUCTION=score
 
 #grid search binarization
 #result store in exp/model/wav2vec/fisher/dev/result/gridSearch_result.txt
+INSTRUCTION=binarizer_gridSearch
+./instruction.sh $INSTRUCTION $SET $exp_dir $data_dir $vad_dir $scores_path $config_path
 
-#INSTRUCTION=binarizer_gridSearch
-#./instruction.sh $INSTRUCTION $SET $exp_dir $data_dir $vad_dir $scores_path $config_path
 
-#. ./path.sh
-#
-#SET=dev
-#exp_dir=exp
-#data_dir=data/voxsrc21
-#vad_dir=$exp_dir/model/wav2vec/beam_search/dev
-#config_path=config/wav2vec_cfg.sh
-#scores_path=$vad_dir/scores/wemos_wav2bsvad.npy
-#INSTRUCTION=score
-#./instruction.sh $INSTRUCTION $SET $exp_dir $data_dir $vad_dir $scores_path $config_path
+
+
