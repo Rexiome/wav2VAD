@@ -21,6 +21,7 @@ time CUDA_VISIBLE_DEVICES=1 python -m torch.distributed.launch  \
 --group_by_length  \
 --fp16=True  \
 --model_name_or_path=/data2_from_58175/huggingface/models/wav2vec-large-xlsr-53-init-minanyu-vocabs  \
+--dataset_path=/data2_from_58175/huggingface/datasets/minnanyu \
 --processor_path=/data2_from_58175/huggingface/models/processor-minnanyu \
 --preprocessing_num_workers=8  \
 --dataloader_num_workers=8  \

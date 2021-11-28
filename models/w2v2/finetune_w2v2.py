@@ -213,6 +213,9 @@ class DataTrainingArguments:
     dataset_name: str = field(
         default=None, metadata={"help": "The name of the dataset to use (via the datasets library)."}
     )
+    dataset_path: str = field(
+        default=None, metadata={"help": "The path of the dataset(including subset)."}
+    )
     dataset_config_name: Optional[str] = field(
         default=None, metadata={"help": "The configuration name of the dataset to use (via the datasets library)."}
     )
@@ -1682,13 +1685,16 @@ def main():
     wer_metric = datasets.load_metric("/data2_from_58175/huggingface/metrics/wer")
 
     # prepare_train_path = "/data2_from_58175/huggingface/datasets/ws_train_s_test_meeting_test_net/train_s"
-    # prepare_test_path = "/data2_from_58175/huggingface/datasets/ws_train_s_test_meeting_test_net/test_meeting"
-    prepare_train_path = "/data2_from_58175/huggingface/datasets/minnanyu/train"
-    prepare_test_path = "/data2_from_58175/huggingface/datasets/minnanyu/test"
+    # prepare_dev_path = "/data2_from_58175/huggingface/datasets/ws_train_s_test_meeting_test_net/test_meeting"
+    dataset_path = data_args.dataset_path
+    prepare_train_path = os.path.join(dataset_path, 'train')
+    prepare_dev_path = os.path.join(dataset_path, 'dev')
+    # prepare_train_path = "/data2_from_58175/huggingface/datasets/minnanyu/train"
+    # prepare_dev_path = "/data2_from_58175/huggingface/datasets/minnanyu/test"
     logger.info(time.strftime('%Y-%m-%d %H:%M:%S'))
     logger.info(f"{stars}loading train_dataset{stars}")
     train_dataset = load_from_disk(prepare_train_path)
-    #
+
     ignored_columns = list(set(train_dataset.column_names) - set(["file", "text","length"]))
     train_dataset = train_dataset.remove_columns(ignored_columns)
     print(train_dataset[0]["file"])
@@ -1699,7 +1705,7 @@ def main():
     else:
         train_dataset = train_dataset
 
-    val_dataset = load_from_disk(prepare_test_path)
+    val_dataset = load_from_disk(prepare_dev_path)
     if ("speech" in val_dataset.features) and ("input_values" in val_dataset.features):
         val_dataset = val_dataset.remove_columns(["input_values"])
     else:
